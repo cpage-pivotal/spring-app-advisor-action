@@ -1,0 +1,37 @@
+name: tanzu-deploy-app-advisor-workflow
+on: [push]
+jobs:
+  tanzu_deploy_app_advisor_job:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    name: Deploy to Tanzu Platform on Commit and Run Spring Application Advisor
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy application to Tanzu Platform
+        uses: cpage-pivotal/tanzu-deploy-action@v1.4
+        with:
+          tanzu_api_token: ${{ secrets.TanzuApiToken }}
+          container_registry: ghcr.io/${{ github.actor }}/<<ENTER VALUE>>
+          buildPlanSource: simple.tanzu.vmware.com
+          javaVersion: 17
+          project: <<ENTER VALUE>>
+          space: <<ENTER VALUE>>
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'liberica'
+          java-version: '21'
+      - name: Run Spring Application Advisor
+        uses: cpage-pivotal/spring-app-advisor-action@v0.0.9
+        with:
+          artifactory_token: ${{ secrets.ArtifactoryToken }}
+          git_token: ${{ secrets.GITHUB_TOKEN }}
+          app_advisor_server: <<ENTER VALUE>>
