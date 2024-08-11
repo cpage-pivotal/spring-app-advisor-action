@@ -1,4 +1,4 @@
-# Tanzu Deploy Action for Github Workflows
+# Spring Application Advisor Action for Github Workflows
 
 ### About
 
