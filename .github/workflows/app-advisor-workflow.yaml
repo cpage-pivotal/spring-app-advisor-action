@@ -1,0 +1,21 @@
+name: spring-app-advisor-workflow
+on: [push]
+jobs:
+  tanzu_deploy_job:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    name: Upgrade Spring Application Dependencies
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'liberica'
+          java-version: '21'
+      - name: Run Spring Application Advisor
+        uses: cpage-pivotal/spring-app-advisor-action@v0.0.9
+        with:
+          artifactory_token: ${{ secrets.ArtifactoryToken }}
+          git_token: ${{ secrets.GITHUB_TOKEN }}
+          app_advisor_server: http://app-advisor.tanzu.corby.page:8080
