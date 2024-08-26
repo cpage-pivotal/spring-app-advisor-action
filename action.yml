@@ -1,6 +1,9 @@
 # action.yml
 name: 'Spring Application Advisor'
 description: 'Incrementally upgrade your Spring application dependencies'
+branding:
+  icon: user-check
+  color: green
 inputs:
   artifactory_token:
     description: 'Token for Spring Enterprise Subscription'
