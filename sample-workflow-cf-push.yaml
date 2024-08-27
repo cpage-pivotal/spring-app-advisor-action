@@ -1,8 +1,9 @@
 name: spring-app-advisor-workflow
 on: [push]
 jobs:
-  cf_push_job:
+  cf_push_app_advisor_job:
     runs-on: ubuntu-latest
+    permissions: write-all
     name: Push Spring App to Cloud Foundry
     defaults:
       run:
@@ -25,12 +26,6 @@ jobs:
           cf_org: <<ENTER VALUE>>
           cf_space: <<ENTER VALUE>>
           manifest_file: ./cf-manifest.yaml
-  app_advisor_job:
-    runs-on: ubuntu-latest
-    permissions: write-all
-    name: Upgrade Spring Application Dependencies
-    needs: cf_push_job
-    steps:
       - name: Run Spring Application Advisor
         uses: cpage-pivotal/spring-app-advisor-action@v1.0.1
         with:

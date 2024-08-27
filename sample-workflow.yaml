@@ -1,7 +1,7 @@
 name: spring-app-advisor-workflow
 on: [push]
 jobs:
-  tanzu_deploy_job:
+  app_advisor_job:
     runs-on: ubuntu-latest
     permissions: write-all
     name: Upgrade Spring Application Dependencies
