@@ -1,5 +1,8 @@
 name: tanzu-deploy-app-advisor-workflow
-on: [push]
+on:
+  push:
+    branches:
+      - 'main'
 jobs:
   tanzu_deploy_app_advisor_job:
     runs-on: ubuntu-latest
