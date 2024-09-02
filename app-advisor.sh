@@ -6,4 +6,4 @@ install /tmp/advisor /usr/local/bin/advisor
 advisor build-config get
 advisor build-config publish --url=${APP_ADVISOR_SERVER}
 advisor upgrade-plan get --url=${APP_ADVISOR_SERVER}
-advisor upgrade-plan apply --push --from-yml --url=${APP_ADVISOR_SERVER}
+advisor upgrade-plan apply --push --url=${APP_ADVISOR_SERVER}
