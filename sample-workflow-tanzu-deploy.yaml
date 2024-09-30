@@ -33,7 +33,7 @@ jobs:
           distribution: 'liberica'
           java-version: '21'
       - name: Run Spring Application Advisor
-        uses: cpage-pivotal/spring-app-advisor-action@v1.0.2
+        uses: cpage-pivotal/spring-app-advisor-action@v1.0.3
         with:
           artifactory_token: ${{ secrets.ArtifactoryToken }}
           git_token: ${{ secrets.GITHUB_TOKEN }}
